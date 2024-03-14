@@ -1,0 +1,111 @@
+/* Gerais */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #E0FFFF;
+}
+
+/*formulários*/
+#formulario {
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #AFEEEE;
+    border: 1px solid #191970;
+    border-radius: 10px;
+    max-width: 800px;
+}
+
+/*titulo dos campos*/
+
+label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000080;
+}
+
+/* Campos de texto */
+input[type="text"],
+input[type="email"],
+textarea
+{
+    padding: 10px;
+    border: 1px solid #00CED1;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* campos de opções */
+input[type="radio"],
+input[type="checkbox"]
+{
+    margin-right: 5px;
+}
+
+/* botões */
+input[type="submit"],
+button[type="reset"],
+button[type="button"]
+{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #5F9EA0;
+    background-color: #E0FFFF;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* cancelar */
+button[type="button"]
+{
+    background-color: #B0E0E6;
+}
+
+select {
+    padding: 10px;
+    border: 1px solid #7FFFD4;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 10px;
+    background-image: linear-gradient(to bottom, #00FFFF, #0000FF);
+}
+
+/* Quando selecionar combobox/seleção */
+select:focus {
+    outline: 2px solid #5F9EA0;
+    border-color: #87CEEB;
+}
+
+legend::before
+{
+    color: red;
+    content: "➔";
+}
+
+/* legenda dos campos */
+
+legend {
+    font-size: 20px;
+    font-weight: bold;
+    color: #191970;
+    border-color: #87CEEB;
+    margin-bottom: 20px;
+}
+
+/* mensagens de erro */
+
+input:invalid
+{
+    border: 2px solid red;
+}
+
+.rodape
+{
+    margin: 0 auto;
+    text-align: center;
+}

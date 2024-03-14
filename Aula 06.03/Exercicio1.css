@@ -1,0 +1,75 @@
+/* cores e fontes */
+
+body {
+    background-color: #ffffff;
+    color: #333333;
+    font-family: 'Roboto', sans-serif;
+    /* roboto tipo especial de sans-serif*/
+    font-size: 16px;
+}
+
+a {
+    color: #2a1892;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #d53422;
+}
+
+/* seções */
+
+header {
+    background-color: #123d52;
+    /* laranja */
+    color: #2bc9c8;
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+
+footer {
+    background-color: #123d52;
+    /* laranja */
+    color: #2bc9c8;
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+
+nav {
+    background-color: #d2ede7;
+    float: left;
+    width: 100%;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    /*inline mas pode alterar largura, altura, margem */
+    display: inline-block;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    padding: 5px 10px;
+}
+
+nav ul li a:hover {
+    color: #ddd38d;
+}
+
+section {
+    background-color: #d2ede7;
+    border: 1px solid #09212b;
+    padding: 20px;
+}
+
+aside {
+    background-color: #123d52;
+    color: #ffffff;
+    padding: 20px;
+    margin: 20px 0;
+    float: right;
+    width: 25%;
+}

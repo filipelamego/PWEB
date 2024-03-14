@@ -1,0 +1,39 @@
+body {
+    background-color: #ffffff;
+    color: #333333;
+    font-family: 'Roboto', sans-serif;
+    /* roboto tipo especial de sans-serif*/
+    font-size: 16px;
+}
+
+header {
+    
+    background-color: #123d52;
+    text-align: center;
+    color: #2bc9c8;
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+
+footer {
+    background-color: #123d52;
+    /* laranja */
+    color: #2bc9c8;
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+
+nav {
+    background-color: #d2ede7;
+    text-align: justify;
+    color: #123d52;
+    
+}
+
+p {
+    text-align: justify;
+}
+
+figure {
+    text-align: center;
+}
