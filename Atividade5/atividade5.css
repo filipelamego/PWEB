@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 div {
     width: 500px;
     height: 500px;
@@ -104,4 +105,112 @@ h2 {
         content: "Azul";
     }
 
+=======
+div {
+    width: 500px;
+    height: 500px;
+    align-items: center;
+    display: flex;
+}
+
+h2 {
+    color: white;
+    font-size: 36px;
+    padding-left: 180px;
+    padding-right: 180px;
+}
+
+/* Media queries/* 
+
+/*  Maior que 1920 */
+
+@media screen and (min-width: 1921px) {
+
+    #conteudo {
+        background-color: green;
+    }
+
+    h2::before {
+        content: "Verde";
+    }
+
+}
+
+/*  1920px ou menor */
+
+@media screen and (min-width: 1367px) and (max-width: 1920px) {
+
+    #conteudo {
+        background-color: yellow;
+    }
+
+    h2::before {
+        content: "Amarelo";
+    }
+
+}
+
+/* 1366px ou menor  */
+@media screen and (min-width: 1081px) and (max-width: 1366px) {
+
+    #conteudo {
+        background-color: purple;
+    }
+
+    h2::before {
+        content: "Roxo";
+    }
+}
+
+/*  1080px or menor  */
+@media screen and (min-width: 1025px) and (max-width: 1080px) {
+
+    #conteudo {
+        background-color: red;
+    }
+
+    h2::before {
+        content: "Vermelho";
+    }
+
+}
+
+/*  1024px or menor  */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+    #conteudo {
+        background-color: violet;
+    }
+
+    h2::before {
+        content: "Violeta";
+    }
+
+}
+
+/*  768px or menor  */
+@media screen and (min-width: 421px) and (max-width: 768px) {
+
+    #conteudo {
+        background-color: orange;
+    }
+
+    h2::before {
+        content: "Laranja";
+    }
+
+}
+
+/*  420px or menor  */
+@media screen and (max-width: 420px) {
+
+    #conteudo {
+        background-color: midnightblue;
+    }
+
+    h2::before {
+        content: "Azul";
+    }
+
+>>>>>>> 24465649e2f45c18f79a8166a4dc5222f1e3c2d3
 }
