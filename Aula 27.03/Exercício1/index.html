@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //Exercício sobre escopo de variáveis
+        x = 1;
+        var y = 2;
+
+        function exemplo() {
+            var z = 3 //fica local
+            w = 4;
+            let i=5;
+
+            x = x * 10;
+            y = y * 10;
+            return `x=${x} y=${y} z=${z} w=${w} i=${i}`;
+        }
+
+        alert(exemplo()); // resulta 10 20 3 4 5 
+
+        //externo - vai dar erro
+
+        alert(`x=${x} y=${y} z=${z} w=${w} i=${i}`);
+    </script>
+</body>
+</html>
