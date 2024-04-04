@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testando operadores especiais</title>
+</head>
+
+<body>
+    <script>
+        //Operador condicional(?)
+        const age = 20;
+        const allowed = (age >= 16) ? "Permitido votar" : "Não permitido votar";
+        alert(allowed); //permitido
+
+        //Operador vírgula(,)
+        function x() {
+            return 'A';
+        }
+
+        function y() {
+            return 'B';
+        }
+
+        function z() {
+            return 'C';
+        }
+
+        var x = (x(), y(), z());
+        alert(x); //retorna C
+
+        var s = "";
+        for (var i = 0, j = 9; i <= 9; i++, j--) {
+            s += ("[" + i + "][" + j + "]");
+        }
+
+        alert(s); // mostra i e j
+
+        //Delete
+        const obj = { nome: "João", endereco: "Av. Carlos Reinaldo Mendes, 3108", idade: 36 };
+
+        alert(obj); //Não imprime no console.log(obj) ele imprime
+        alert(obj.nome, obj.endereco, obj.idade); // só imprime o nome;
+
+        alert(JSON.stringify(obj)); // imprime tudo
+        delete obj.endereco;
+        alert(JSON.stringify(obj)); //não imprime o endereço
+
+        //In
+        const fruits = ['apple', 'banana', 'orange'];
+        alert('banana' in fruits); // Retorna true (professora vai verificar, porque retornou false)
+
+        //New
+        function Person(name) {
+            this.name = name;
+        }
+
+        const john = new Person('John');
+        alert(john.name); //saída John.
+
+        //Outro exemplo com new
+
+        var objP = new Object();
+        objP.nomePessoa = "Pedro";
+        alert(objP.nomePessoa); //Saída Pedro
+
+        //InstanceOf
+        alert(john instanceof Person); //true
+
+        //This
+        function myFunc() {
+            alert(this);
+        }
+
+        myFunc(); //Window
+
+        var obj1 = {
+            teste: function () {
+                return (this);
+            }
+        }
+
+        alert(obj1.teste()); //Object
+
+        //Typeof - Imprime o tipo da variável.
+
+        var anObj = { job: "Sou um objeto!" };
+        var aNumber = 42;
+        var aString = "Sou uma string!";
+
+        alert(typeof anObj); // irá imprimir "objeto";
+        alert(typeof aNumber); //irá imprimir "number";
+        alert(typeof aString); //irá imprimir "String";
+
+        //Coalescência nula (??)
+        const defaultValue = "Default Value";
+        const userInput = null;
+        const finalValue = userInput ?? defaultValue;
+        alert(finalValue); //Output: Default Value;
+
+        const name = "Mary";
+        alert(name ?? "name is null");
+    </script>
+</body>
+
+</html>
