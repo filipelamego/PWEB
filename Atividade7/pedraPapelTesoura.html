@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criando um jogo - Pedra papel tesoura</title>
+</head>
+
+<body>
+    <script>
+        while (true) {
+            alert("Bem vindo ao Jokenpô!");
+
+            //Escolha do jogador
+            var resultado;
+            var escolhaJogador = prompt("Faça sua escolha: \n"
+                + "1 - Pedra\n"
+                + "2 - Papel\n"
+                + "3 - Tesoura");
+            /*if (escolhaJogador == 1) {
+                alert("Você escolheu pedra");
+                    } else if (escolhaJogador == 2) {
+                        alert("Você escolheu papel");;
+                    } else {
+                        alert("Você escolheu tesoura");
+            }*/
+
+            //Escolha do computador
+
+            var escolhaPC = Math.floor(Math.random(0, 1) * 3 + 1);
+
+            /*if (escolhaPC == 1) {
+                alert("O PC escolheu pedra");
+            } else if (escolhaPC == 2) {
+                alert("O PC escolheu papel");;
+            } else {
+                alert("O PC escolheu tesoura");
+            }*/
+
+            //Fazendo comparações para ver quem ganhou
+
+            if (escolhaPC == 1) {
+                if (escolhaJogador == 1) {
+                    resultado = "Empate";
+                    escolhaJogador = "Pedra";
+                } else if (escolhaJogador == 2) {
+                    resultado = "Você ganhou pois papel cobre pedra!";
+                    escolhaJogador = "Papel";
+                } else if (escolhaJogador == 3) {
+                    resultado = "Você perdeu, pois pedra quebra tesoura";
+                    escolhaJogador = "Tesoura";
+                }
+                escolhaPC = "Pedra";
+            }
+
+            if (escolhaPC == 2) {
+                if (escolhaJogador == 2) {
+                    resultado = "Empate!";
+                    escolhaJogador = "Papel";
+                } else if (escolhaJogador == 1) {
+                    resultado = "Você perdeu pois papel cobre pedra!";
+                    escolhaJogador = "Pedra";
+                } else if (escolhaJogador == 3) {
+                    resultado = "Você ganhou, pois tesoura corta pepel";
+                    escolhaJogador = "Tesoura";
+                }
+                escolhaPC = "Papel";
+            }
+
+            if (escolhaPC == 3) {
+                if (escolhaJogador == 3) {
+                    resultado = "Empate!";
+                    escolhaJogador = "Tesoura";
+                } else if (escolhaJogador == 1) {
+                    resultado = "Você ganhou pois pedra quebra tesoura!";
+                    escolhaJogador = "Pedra";
+                } else if (escolhaJogador == 2) {
+                    resultado = "Você perdeu, pois tesoura corta papel!";
+                    escolhaJogador = "Papel";
+                }
+                escolhaPC = "Tesoura";
+            }
+
+            alert("A escolha do usuário foi: " + escolhaJogador + "\n"
+                + "A escolha do computador foi: " + escolhaPC + "\n"
+                + "O resultado foi: " + resultado);
+
+            if (confirm("Deseja jogar novamente:")) {
+                x = 0;
+            } else {
+                break;
+            }
+        }
+
+    </script>
+</body>
+
+</html>
