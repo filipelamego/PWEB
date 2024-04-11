@@ -1,6 +1,6 @@
 var idade = [], sexo = [], opiniao = [];
 
-for (cont = 0; cont < 1; cont++) {
+for (cont = 0; cont < 45; cont++) {
     idade[cont] = parseFloat(prompt("Informe sua idade: "));
     sexo[cont] = prompt("Informe seu sexo: ");
     while (sexo[cont] !== "M" && sexo[cont] !== "F" && sexo[cont] !== "m" && sexo[cont] !== "f") {
