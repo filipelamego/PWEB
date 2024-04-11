@@ -1,13 +1,16 @@
 var idade = [], sexo = [], opiniao = [];
 
-for (cont = 0; cont < 45; cont++) {
+for (cont = 0; cont < 3; cont++) {
     idade[cont] = parseFloat(prompt("Informe sua idade: "));
+    while (isNaN(idade[cont])) {
+        idade[cont] = parseFloat(prompt("A idade deve ser um valor númerico, digite novamente:"));
+    }
     sexo[cont] = prompt("Informe seu sexo: ");
     while (sexo[cont] !== "M" && sexo[cont] !== "F" && sexo[cont] !== "m" && sexo[cont] !== "f") {
         sexo[cont] = prompt("Sexo deve ser apenas M ou F, informe seu sexo:");
     }
     opiniao[cont] = parseFloat(prompt("Informe sua nota de 1 a 4 para o filme: "));
-    while(opiniao[cont] < 1 || opiniao[cont] > 4){
+    while (opiniao[cont] < 1 || opiniao[cont] > 4) {
         opiniao[cont] = prompt("A nota deve estar entre 1 e 4, digite novamente:");
     }
 }
@@ -20,7 +23,7 @@ function mediaIdade() {
         soma = soma + idade[cont];
     }
     var media = soma / idade.length;
-    return alert("A média das idades é: " + media.toFixed(0));
+    return alert("A média das idades é: " + media.toFixed(2));
 }
 
 //Função maiorIdade
