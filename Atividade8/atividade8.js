@@ -1,6 +1,6 @@
 var idade = [], sexo = [], opiniao = [];
 
-for (cont = 0; cont < 3; cont++) {
+for (cont = 0; cont < 45; cont++) {
     idade[cont] = parseFloat(prompt("Informe sua idade: "));
     while (isNaN(idade[cont])) {
         idade[cont] = parseFloat(prompt("A idade deve ser um valor númerico, digite novamente:"));
