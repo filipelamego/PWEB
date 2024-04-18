@@ -1,10 +1,14 @@
-var peso = parseFloat(document.getElementById("peso").value);
-var altura = parseFloat(document.getElementById("altura").value);
-var imc = 0;
-var classif = "";
-const setaFoco = document.getElementById("limpar");
+//FUNÇÕES PARA CALCULAR O IMC DE DETERMINADA PESSOA ATRAVÉS DO PESO E ALTURA
+//FÓRMULA IMC = PESO/(ALTURA²)
+
+const setaFoco = document.getElementById("limpar"); //CONSTANTE PARA LIMPAR OS CAMPOS
 
 function calcularIMC() {
+    var peso = parseFloat(document.getElementById("peso").value);
+    var altura = parseFloat(document.getElementById("altura").value);
+    var imc = 0;
+    var classif = "";
+
     imc = peso / (Math.pow(altura, 2));
 
     if (imc < 18.5) {
@@ -20,17 +24,11 @@ function calcularIMC() {
         classif = "OBESIDADE"
     }
     else {
-        classif = "OBESIDADE";
+        classif = "OBESIDADE GRAVE";
     }
 
-    if (document.getElementById("peso").value == "" || document.getElementById("altura").value == "") {
-        document.getElementById("classif").value = "Valor(es) invalido(s)!"
-    }
-    else {
-
-        document.getElementById("resultado").value = parseFloat(imc.toFixed(2));
-        document.getElementById("classif").value = classif;
-    }
+    document.getElementById("resultado").value = parseFloat(imc.toFixed(2));
+    document.getElementById("classif").value = classif;
 }
 
 function limpar() {
@@ -39,7 +37,5 @@ function limpar() {
     document.getElementById("resultado").value = "";
     document.getElementById("classif").value = "";
 
-    setaFoco.addEventListener("click", function() {
-        document.getElementById("peso").focus();
-    });
+    setaFoco.focus();
 }
