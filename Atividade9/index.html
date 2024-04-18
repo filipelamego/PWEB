@@ -9,18 +9,21 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1>Calculadora de IMC</h1>
-        <label for="peso">Peso (kg):</label>
-        <input type="number" id="peso" step="any" required><br>
-        <label for="altura">Altura (metros):</label>
-        <input type="number" id="altura" step="any" required><br>
-        <label for="resultado">Resultado:</label>
-        <input type="text" id="resultado" readonly><br>
-        <label for="resultado">Classificação:</label>
-        <input type="text" id="classif" readonly><br>
-        <button onclick="limpar()">Limpar</button>
-        <button onclick="calcularIMC()">Calcular IMC</button><br>
+    <div class="externa">
+        <div class="container">
+            <h1>Calculadora de IMC</h1>
+            <label for="peso">Peso (kg):</label>
+            <input type="number" id="peso" step="any" required><br>
+            <label for="altura">Altura (metros):</label>
+            <input type="number" id="altura" step="any" required><br>
+            <label for="resultado">Resultado:</label>
+            <input type="text" id="resultado" readonly><br>
+            <label for="resultado">Classificação:</label>
+            <input type="text" id="classif" readonly><br>
+            <button onclick="limpar()">Limpar</button>
+            <button onclick="calcularIMC()">Calcular IMC</button><br>
+        </div>
+    </div>
 </body>
 <script src="imc.js"></script>
 

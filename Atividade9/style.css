@@ -7,26 +7,48 @@ body {
     justify-content: center;
     height: 100vh;
 }
+
 .container {
     text-align: center;
 }
+
+.externa {
+    background-color: #ccc;
+    border-color: #333;
+    border-style: none;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: space-around;
+
+}
+
 h1 {
     color: #333;
 }
-input[type="text"], input[type="number"] {
+
+input[type="text"],
+input[type="number"] {
     padding: 8px;
     margin: 5px;
     border-radius: 5px;
     border: 1px solid #ccc;
 }
+
 button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: #007afe;
     border: none;
-    border-radius: 5px;
+    color: #fff;
+    padding: 15px 32px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 4px;
     cursor: pointer;
 }
+
 button:hover {
-    background-color: #0056b3;
+    outline: none;
+    background-color: #0069D9;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
