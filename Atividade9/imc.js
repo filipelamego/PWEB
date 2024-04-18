@@ -2,7 +2,7 @@ var peso = parseFloat(document.getElementById("peso").value);
 var altura = parseFloat(document.getElementById("altura").value);
 var imc = 0;
 var classif = "";
-const limparCampos = document.getElementById("limpar");
+const setaFoco = document.getElementById("limpar");
 
 function calcularIMC() {
     imc = peso / (Math.pow(altura, 2));
@@ -39,7 +39,7 @@ function limpar() {
     document.getElementById("resultado").value = "";
     document.getElementById("classif").value = "";
 
-    limparCampos.addEventListener("click", function() {
+    setaFoco.addEventListener("click", function() {
         document.getElementById("peso").focus();
     });
 }
