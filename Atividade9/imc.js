@@ -1,7 +1,7 @@
 //FUNÇÕES PARA CALCULAR O IMC DE DETERMINADA PESSOA ATRAVÉS DO PESO E ALTURA
 //FÓRMULA IMC = PESO/(ALTURA²)
 
-const setaFoco = document.getElementById("limpar"); //CONSTANTE PARA LIMPAR OS CAMPOS
+const setaFoco = document.getElementById("peso"); //CONSTANTE PARA AJUSTAR O FOCO
 
 function calcularIMC() {
     var peso = parseFloat(document.getElementById("peso").value);
@@ -38,4 +38,5 @@ function limpar() {
     document.getElementById("classif").value = "";
 
     setaFoco.focus();
+
 }
