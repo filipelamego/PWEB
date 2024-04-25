@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objeto de 3 formas diferentes</title>
+</head>
+
+<body>
+    <script>
+        //Usando object
+        var Funcionario = new Object();
+        Funcionario.nome = "Filipe Lamego";
+        Funcionario.matricula = "123";
+        Funcionario.funcao = "Data Base Administrator"
+
+        alert(`nome= ${Funcionario.nome} \nmatrícula= ${Funcionario.matricula}\nFunção= ${Funcionario.funcao}`);
+
+        //Usando {}
+        var Funcionario1 = {};
+        Funcionario1.nome = "Fernanda Szabadi";
+        Funcionario1.matricula = "456";
+        Funcionario1.funcao = "Programadora Full-Stack"
+        alert(`nome= ${Funcionario1.nome} \nmatrícula= ${Funcionario1.matricula}\nFunção= ${Funcionario1.funcao}`);
+
+        //literal
+        var Funcionario2 = {
+            nome: "Alexandre Arantes",
+            matricula: "789",
+            funcao: "UI/UX Designer"
+        };
+        alert(`nome= ${Funcionario2.nome} \nmatrícula= ${Funcionario2.matricula}\nFunção= ${Funcionario2.funcao}`);
+    </script>
+</body>
+
+</html>

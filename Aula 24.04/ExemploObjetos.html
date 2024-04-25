@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo Objetos</title>
+</head>
+
+<body>
+    <script>
+        //Usando object
+        var aluno1 = new Object();
+        aluno1.ra = "0030482213010";
+        aluno1.nome = "Filipe";
+
+        alert(`ra=${aluno1.ra} nome=${aluno1.nome}`);
+
+        //Usando {}
+        var aluno2 = {};
+        aluno2.ra = "0030482213026";
+        aluno2["nome"] = "Fernanda";
+        alert("\tra=" + aluno2.ra + " nome=" + aluno2.nome);
+
+        //literal
+        var aluno3 = {
+            ra: "1234567",
+            nome: "FIlipe"
+        };
+        alert("ra=" + aluno3.ra + " nome=" + aluno3.nome);
+
+        //usando função construtora
+        function Aluno(ra, nome) {
+            this.ra = ra;
+            this.nome = nome;
+            this.MostraDados = function () {
+                return "ra=" + this.ra + " nome=" + this.nome;
+            }
+        }
+        var aluno4 = new Aluno("123", "Franciele");
+        alert(aluno4.MostraDados());
+        alert(aluno4.nome);
+
+        var aluno5 = {};
+        var nome_propriedade = "ra";
+        aluno5[nome_propriedade] = "123";
+        aluno5['nome'] = "Edson";
+        alert(aluno5.ra + " " + aluno5.nome);
+
+        //função construtora sem parâmetros
+        function Aluno2() {
+            var ra; //encapsulado-escondido
+            var nome;
+            this.setRa = function (value) {
+                this.ra = value;
+            }
+            this.getRa = function () {
+                return this.ra;
+            }
+            this.setNome = function (value) {
+                this.nome = nome;
+            }
+            this.getNome = function () {
+                return this.nome;
+            }
+        }
+
+        var aluno6 = new Aluno2();
+        aluno6.setNome("Carolina");
+        aluno6.setRa("234");
+        alert("ra=" + aluno6.getRa() + " nome=" + aluno6.getNome());
+
+        //herança
+        function AlunoADS() {
+            var numLab;
+            this.setNumLab = function (value) {
+                this.numLab = value;
+            }
+            this.getNumLab = function () {
+                return this.numLab;
+            }
+        }
+
+        //herança
+        AlunoADS.prototype = new Aluno2();
+        var aluno7 = new AlunoADS();
+        aluno7.setNome("Adriana");
+        aluno7.setRa("123");
+        aluno7.setNumLab(5);
+        alert(aluno7.getNome() + " " + aluno7.getNumLab());
+
+
+        //a partor do ES10
+        const arr = [['código', 1], ['nome', 'João'],
+        ['idade', 23]];
+        const obj = Object.fromEntries(arr);
+        alert(JSON.stringify(obj));
+
+        //Classe
+        class Aluno1 {
+            constructor() {
+                this._ra;
+                this._nome;
+            }
+            setNome(value) {
+                this._nome = value;
+            }
+            getNome() {
+                return this._nome;
+            }
+            setRa(value) {
+                this._ra = value;
+            }
+            getRa() {
+                return this._ra;
+            }
+        }
+        var objAluno = new Aluno1();
+        objAluno.setNome("Gisele");
+        objAluno.setRa('123');
+        alert(`nome=${objAluno.getNome()} ra=${objAluno.getRa()}}`);
+
+        //herança
+        class AlunoADS1 extends Aluno1 {
+            constructor() {
+                //super chama o construtor da classe
+                super();
+                this._numLab;
+            }
+            setNumLab(value) {
+                this._numLab = value;
+            }
+            getNumLab() {
+                return this._numLab;
+            }
+        }
+
+        var objAlunoADS = new AlunoADS1();
+        objAlunoADS.setNome("Nicollas");
+        objAlunoADS.setRa("123");
+        objAlunoADS.setNumLab(6);
+        alert(`nome=${objAlunoADS.getNome()}
+            ra=${objAlunoADS.getRa()}
+            numlab=${objAlunoADS.getNumLab()}`);
+
+        //cópia de objetos
+        var obj1 = new Object();
+        var obj2 = obj1;
+        obj1.nome = "Vinicios";
+        alert(obj2.nome);
+    </script>
+</body>
+
+</html>
