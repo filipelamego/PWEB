@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadro de Tarefas - KanBan</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Quadro de Tarefas - KanBan</h1>
+        <div class="board">
+            <div class="column" id="pendentes">
+                <h2>Pendentes</h2>
+            </div>
+            <div class="column" id="emAndamento">
+                <h2>Em Andamento</h2>
+            </div>
+            <div class="column" id="concluidas">
+                <h2>Concluídas</h2>
+            </div>
+        </div>
+        <div class="controls">
+            <button class="add-task" onclick="abrirFormulario()">Nova Tarefa</button>
+        </div>
+    </div>
+
+    <div id="taskFormModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharFormulario()">&times;</span>
+            <h2 id="formTitle">Nova Tarefa</h2>
+            <form id="taskForm">
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" name="titulo" required>
+
+                <label for="descricao">Descrição:</label>
+                <textarea id="descricao" name="descricao" required></textarea>
+
+                <label for="responsavel">Responsável:</label>
+                <input type="text" id="responsavel" name="responsavel" required>
+
+                <label for="prioridade">Prioridade:</label>
+                <select id="prioridade" name="prioridade" required>
+                    <option value="alta">Alta</option>
+                    <option value="media">Média</option>
+                    <option value="baixa">Baixa</option>
+                </select>
+
+                <label for="prazo">Prazo:</label>
+                <input type="date" id="prazo" name="prazo" required>
+
+                <label for="status">Status:</label>
+                <select id="status" name="status" required>
+                    <option value="pendentes">Pendentes</option>
+                    <option value="emAndamento">Em Andamento</option>
+                    <option value="concluidas">Concluídas</option>
+                </select>
+
+                <div class="form-buttons">
+                    <button type="button" onclick="salvarTarefa()">Salvar</button>
+                    <button type="button" onclick="excluirTarefa()">Excluir</button>
+                    <button type="button" onclick="fecharFormulario()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professores - FATEC Sorocaba</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<style>
+    table#tabela1 tr td {
+        /* Toda a tabela com fundo creme */
+        background: #FFC;
+    }
+
+    table#tabela1 tr.cabeca td {
+        background: #EEE;
+        /* Linhas com fundo cinza*/
+    }
+</style>
+
+<body>
+    <table border="1px" cellpadding="5px" cellspacing="0" id="tabela1">
+        <tr class="cabeca">
+            <td>Nome</td>
+            <td>E-mail</td>
+        </tr>
+
+        <% console.log('QUANTIDADE DE REGISTROS ->' + profs.length); %>
+
+            <%for (var i=0; i < profs.length; i++){%>
+                <tr>
+                    <td>
+                        <%=profs[i].NOME_PROFESSOR %>
+                    </td>
+                    <td>
+                        <%=profs[i].EMAIL_PROFESSOR %>
+                    </td>
+                </tr>
+                <%}%>
+    </table>
+
+    <footer>
+        <p>&copy; 2024 FATEC Sorocaba. Todos os direitos reservados.</p>
+    </footer>
+</body>
+
+</html>
