@@ -173,4 +173,13 @@ h1 {
     text-decoration: none;
 }
 
+/* Regras de mídia para dispositivos móveis */
+@media screen and (max-width: 768px) {
+    .column {
+        width: 100%; /* Define a largura de cada coluna para 100% em dispositivos menores */
+        margin-right: 0; /* Remove a margem direita para que não haja espaçamento extra */
+    }
+}
+
+
    

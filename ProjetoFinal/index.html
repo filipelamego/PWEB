@@ -9,7 +9,9 @@
 </head>
 
 <body>
+    
     <div class="container">
+        
         <h1>Quadro de Tarefas - KanBan</h1>
         <div class="board">
             <div class="column" id="pendentes">
@@ -24,7 +26,15 @@
         </div>
         <div class="controls">
             <button class="add-task" onclick="abrirFormulario()">Nova Tarefa</button>
+            <input type="text" id="search" placeholder="Buscar tarefas..." oninput="buscarTarefas()">
+            <select id="filtroPrioridade" onchange="filtrarTarefas()">
+                <option value="">Filtrar por Prioridade</option>
+                <option value="alta">Alta</option>
+                <option value="media">Média</option>
+                <option value="baixa">Baixa</option>
+            </select>
         </div>
+        
     </div>
 
     <div id="taskFormModal" class="modal">

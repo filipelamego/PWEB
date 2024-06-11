@@ -25,9 +25,16 @@ function salvarTarefa() {
     const prazo = form.prazo.value;
     const status = form.status.value;
 
+    const [ano, mes, dia] = prazo.split('-');
+    const prazoFormatado = `${dia}/${mes}/${ano}`;
+
     if (currentTask) {
         // Atualizar tarefa existente
-        currentTask.querySelector('span').textContent = titulo;
+        currentTask.querySelector('.task-title').textContent = `Título: ${titulo}`;
+        currentTask.querySelector('.task-descricao').textContent = `Descrição: ${descricao}`;
+        currentTask.querySelector('.task-responsavel').textContent = `Responsável: ${responsavel}`;
+        currentTask.querySelector('.task-prioridade').textContent = `Prioridade: ${prioridade}`;
+        currentTask.querySelector('.task-prazo').textContent = `Prazo: ${prazoFormatado}`;
         currentTask.dataset.descricao = descricao;
         currentTask.dataset.responsavel = responsavel;
         currentTask.dataset.prioridade = prioridade;
@@ -45,7 +52,11 @@ function salvarTarefa() {
         tarefa.innerHTML = `<div class="task-content">
                                 <div class="task-info">
                                     <div class="color-indicator"></div>
-                                    <span>${titulo}</span>
+                                    <span class="task-title">Título: ${titulo}</span>
+                                    <div class="task-descricao">Descrição: ${descricao}</div>
+                                    <div class="task-responsavel">Responsável: ${responsavel}</div>
+                                    <div class="task-prioridade">Prioridade: ${prioridade}</div>
+                                    <div class="task-prazo">Prazo: ${prazoFormatado}</div>
                                 </div>`;
         tarefa.dataset.descricao = descricao;
         tarefa.dataset.responsavel = responsavel;
@@ -59,32 +70,42 @@ function salvarTarefa() {
         tarefa.onclick = () => editarTarefa(tarefa); // Adicionando evento de clique para edição
 
         document.getElementById(status).appendChild(tarefa);
+        atualizarCorTarefa(tarefa, status);
     }
 
     currentTask = null;
     fecharFormulario();
+    salvarTarefas();
 }
+
 
 function editarTarefa(tarefa) {
     currentTask = tarefa;
     const form = document.getElementById('taskForm');
-    form.titulo.value = tarefa.querySelector('span').textContent.trim();
-    form.descricao.value = tarefa.dataset.descricao;
-    form.responsavel.value = tarefa.dataset.responsavel;
-    form.prioridade.value = tarefa.dataset.prioridade;
-    form.prazo.value = tarefa.dataset.prazo;
+    form.titulo.value = tarefa.querySelector('.task-title').textContent.replace('Título: ', '').trim();
+    form.descricao.value = tarefa.querySelector('.task-descricao').textContent.replace('Descrição: ', '').trim();
+    form.responsavel.value = tarefa.querySelector('.task-responsavel').textContent.replace('Responsável: ', '').trim();
+    form.prioridade.value = tarefa.querySelector('.task-prioridade').textContent.replace('Prioridade: ', '').trim();
+    const prazo = tarefa.dataset.prazo;
+    form.prazo.value = prazo;
     form.status.value = tarefa.dataset.status;
 
     abrirFormulario();
 }
 
+
 function excluirTarefa() {
     if (currentTask) {
-        currentTask.remove();
-        currentTask = null;
+        const confirmacao = confirm("Tem certeza de que deseja excluir esta tarefa?");
+        if (confirmacao) {
+            currentTask.remove();
+            currentTask = null;
+            salvarTarefas();
+        }
     }
     fecharFormulario();
 }
+
 
 function dragStart(event) {
     event.dataTransfer.setData('text/plain', event.target.id);
@@ -107,10 +128,17 @@ function drop(event) {
     const draggable = document.getElementById(id);
     const dropzone = event.target.closest('.column');
     if (dropzone && draggable) {
-        dropzone.appendChild(draggable);
-        atualizarCorTarefa(draggable, dropzone.id);
+        // Verificar se a tarefa já está no quadro correto
+        if (dropzone.id !== draggable.parentNode.id) {
+            // Atualizar a cor e posição da tarefa
+            atualizarCorTarefa(draggable, dropzone.id);
+            dropzone.appendChild(draggable);
+            draggable.dataset.status = dropzone.id;
+            salvarTarefas(); // Salvar a alteração no localStorage
+        }
     }
 }
+
 
 function atualizarCorTarefa(tarefa, colunaId) {
     const colorIndicator = tarefa.querySelector('.color-indicator');
@@ -127,11 +155,88 @@ function atualizarCorTarefa(tarefa, colunaId) {
     }
 }
 
+function salvarTarefas() {
+    const tarefas = [];
+    document.querySelectorAll('.task').forEach(task => {
+        tarefas.push({
+            id: task.id,
+            titulo: task.querySelector('span').textContent.trim(),
+            descricao: task.dataset.descricao,
+            responsavel: task.dataset.responsavel,
+            prioridade: task.dataset.prioridade,
+            prazo: task.dataset.prazo,
+            status: task.dataset.status
+        });
+    });
+    localStorage.setItem('tarefas', JSON.stringify(tarefas));
+}
+
+function carregarTarefas() {
+    const tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
+
+    tarefas.forEach(tarefa => {
+        const tarefaExistente = document.getElementById(tarefa.id);
+        if (!tarefaExistente) {
+            const [ano, mes, dia] = tarefa.prazo.split('-');
+            const prazoFormatado = `${dia}/${mes}/${ano}`;
+
+            const taskElement = document.createElement('div');
+            taskElement.className = `task ${tarefa.status}`;
+            taskElement.draggable = true;
+            taskElement.innerHTML = `<div class="task-content">
+                                        <div class="task-info">
+                                            <div class="color-indicator"></div>
+                                            <span class="task-title">Título: ${tarefa.titulo}</span>
+                                            <div class="task-descricao">Descrição: ${tarefa.descricao}</div>
+                                            <div class="task-responsavel">Responsável: ${tarefa.responsavel}</div>
+                                            <div class="task-prioridade">Prioridade: ${tarefa.prioridade}</div>
+                                            <div class="task-prazo">Prazo: ${prazoFormatado}</div>
+                                        </div>`;
+            taskElement.dataset.descricao = tarefa.descricao;
+            taskElement.dataset.responsavel = tarefa.responsavel;
+            taskElement.dataset.prioridade = tarefa.prioridade;
+            taskElement.dataset.prazo = tarefa.prazo;
+            taskElement.dataset.status = tarefa.status;
+            taskElement.id = tarefa.id;
+
+            taskElement.ondragstart = dragStart;
+            taskElement.ondragend = dragEnd;
+            taskElement.onclick = () => editarTarefa(taskElement); 
+
+            document.getElementById(tarefa.status).appendChild(taskElement);
+            atualizarCorTarefa(taskElement, tarefa.status);
+        }
+    });
+}
+
+function buscarTarefas() {
+    const termo = document.getElementById('search').value.toLowerCase();
+    document.querySelectorAll('.task').forEach(task => {
+        const titulo = task.querySelector('span').textContent.toLowerCase();
+        const descricao = task.dataset.descricao.toLowerCase();
+        if (titulo.includes(termo) || descricao.includes(termo)) {
+            task.style.display = '';
+        } else {
+            task.style.display = 'none';
+        }
+    });
+}
+
+function filtrarTarefas() {
+    const filtro = document.getElementById('filtroPrioridade').value;
+    document.querySelectorAll('.task').forEach(task => {
+        if (!filtro || task.dataset.prioridade === filtro) {
+            task.style.display = '';
+        } else {
+            task.style.display = 'none';
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const tasks = document.querySelectorAll('.task');
     tasks.forEach(task => {
-        task.addEventListener('click', () => editarTarefa(task)); // Adicionando evento de clique para edição
-        task.addEventListener('dragstart', dragStart);
+        task.addEventListener('click', () => editarTarefa(task));
         task.addEventListener('dragend', dragEnd);
     });
 
@@ -140,4 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
         column.addEventListener('dragover', allowDrop);
         column.addEventListener('drop', drop);
     });
+
+    carregarTarefas();
 });
+
